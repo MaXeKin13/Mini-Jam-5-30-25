@@ -21,6 +21,10 @@ public class RythmManager : MonoBehaviour
     public int hitsNeeded = 10;
 
     private int hitsDone = 0;
+
+    [Space(10)]
+    public GameObject stepLeft;
+    public GameObject stepRight;
     private void Start()
     {
         StartCoroutine(WalkCycle());
@@ -74,11 +78,22 @@ public class RythmManager : MonoBehaviour
             walking = false;
             StopAllCoroutines();
             GameManager.Instance.ChangeState(GameManager.GameState.Stabbing);
+            canHit = false;
         }
     }    
    
     private void Step()
     {
+        if(stepLeft.activeSelf)
+        {
+            stepLeft.SetActive(false);
+            stepRight.SetActive(true);
+        }
+        else
+        {
+            stepLeft.SetActive(true);
+            stepRight.SetActive(false);
+        }
         stepSound.Play();
     }
 }
