@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlayerStep()
     {
-        transform.DOMoveZ(stepDistance, 0.25f)
+        transform.DOMoveZ(transform.position.z + stepDistance, 0.25f)
             .OnComplete(() =>
             {
                 Debug.Log("Player has stepped forward.");
