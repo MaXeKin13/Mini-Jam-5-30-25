@@ -4,6 +4,7 @@ public class StabCursor : MonoBehaviour
 {
     private bool isInStabZone = false;
 
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("StabZone"))
@@ -20,19 +21,15 @@ public class StabCursor : MonoBehaviour
         }
     }
 
-    private void TryStab()
+    public void TryStab()
     {
         if(isInStabZone)
         {
             Debug.Log("Stab successful!");
+
+            GameManager.Instance.knife.Stab();
         }
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TryStab();
-        }
-    }
+    
 }

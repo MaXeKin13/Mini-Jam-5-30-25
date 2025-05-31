@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public StabbingManager stabbingManager;
+
+    
+    public Knife knife;
     public enum GameState
     {
         Walking,
@@ -37,5 +40,10 @@ public class GameManager : MonoBehaviour
     public void StartStabbing()
     {
         stabbingManager.StartStabbing();
+    }
+
+    public void StabAnim()
+    {
+        knife.Stab();
     }
 }
