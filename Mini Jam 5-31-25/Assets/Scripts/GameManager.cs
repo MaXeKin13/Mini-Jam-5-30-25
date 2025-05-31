@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class GameManager : MonoBehaviour
 
     
     public Knife knife;
+
+    public GameObject character;
+    [Space(10)]
+    public UnityEvent onFinishStab;
     public enum GameState
     {
         Walking,
@@ -53,6 +59,19 @@ public class GameManager : MonoBehaviour
 
     public void FinishStabbing()
     {
+        //onFinishStab?.Invoke();
 
+        ExplodeCharacter();
     }    
+
+    private void ExplodeCharacter()
+    {
+        character.transform.DOScale(Vector3.zero, 0.25f)
+            .SetEase(Ease.InOutSine)
+            .OnComplete(() =>
+            {
+                character.SetActive(false);
+                onFinishStab?.Invoke();
+            });
+    }
 }

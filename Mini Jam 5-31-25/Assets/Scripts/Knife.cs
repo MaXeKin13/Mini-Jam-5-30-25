@@ -42,10 +42,10 @@ public class Knife : MonoBehaviour
                     stabNum++;
                     if (stabNum >= GameManager.Instance.stabbingManager.hitsNeeded)
                     {
-                        GameManager.Instance.stabbingManager.FinishStabbing();
+                        GameManager.Instance.FinishStabbing();
                     }
                     else
-                    {
+                    { 
                         canStab = true;
                     }
                 });
