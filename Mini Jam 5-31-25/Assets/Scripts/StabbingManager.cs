@@ -52,6 +52,10 @@ public class StabbingManager : MonoBehaviour
         {
             stabCursor.TryStab();
         }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void IncreaseJiggle()
