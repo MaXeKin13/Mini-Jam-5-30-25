@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Walking,
-        Stabbing
+        Stabbing,
+        FinishStabbing
     }
     public GameState gameState = GameState.Walking;
 
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
             case GameState.Stabbing:
                 StartStabbing();
                 break;
+            case GameState.FinishStabbing:
+                FinishStabbing();
+                break;
         }
     }
 
@@ -46,4 +50,9 @@ public class GameManager : MonoBehaviour
     {
         knife.Stab();
     }
+
+    public void FinishStabbing()
+    {
+
+    }    
 }

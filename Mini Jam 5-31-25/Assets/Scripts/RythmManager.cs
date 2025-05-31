@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -95,5 +96,10 @@ public class RythmManager : MonoBehaviour
             stepRight.SetActive(false);
         }
         stepSound.Play();
+    }
+
+    public void Die()
+    {
+        //transform.DOScale()
     }
 }
