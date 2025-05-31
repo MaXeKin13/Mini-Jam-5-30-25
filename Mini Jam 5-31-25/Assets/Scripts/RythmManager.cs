@@ -16,6 +16,11 @@ public class RythmManager : MonoBehaviour
 
     public AudioSource stepSound;
 
+
+    [Space(10)]
+    public int hitsNeeded = 10;
+
+    private int hitsDone = 0;
     private void Start()
     {
         StartCoroutine(WalkCycle());
@@ -56,8 +61,21 @@ public class RythmManager : MonoBehaviour
             Debug.Log("Hit!");
 
             GameManager.Instance.playerMovement.PlayerStep();
+            hitsDone++;
+            CheckIfReached();
         }
     }
+
+    private void CheckIfReached()
+    {
+        if(hitsDone >= hitsNeeded)
+        {
+            
+            walking = false;
+            StopAllCoroutines();
+            GameManager.Instance.ChangeState(GameManager.GameState.Stabbing);
+        }
+    }    
    
     private void Step()
     {
