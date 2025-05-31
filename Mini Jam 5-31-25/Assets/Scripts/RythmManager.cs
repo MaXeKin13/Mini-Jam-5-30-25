@@ -10,14 +10,7 @@ public class RythmManager : MonoBehaviour
 
     public UnityEvent onCanHit;
     public UnityEvent onCantHit;
-    public enum RythmType
-    {
-        None,
-        Beat,
-        Bar,
-        Measure,
-        Phrase
-    }
+   
     public float timeToHit = 0.5f;
     public float[] intervals; //interval between first and second step
 
@@ -61,6 +54,8 @@ public class RythmManager : MonoBehaviour
         {
             // Trigger hit logic
             Debug.Log("Hit!");
+
+            GameManager.Instance.playerMovement.PlayerStep();
         }
     }
    
