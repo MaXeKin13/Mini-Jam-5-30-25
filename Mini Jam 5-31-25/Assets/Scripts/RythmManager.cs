@@ -27,6 +27,8 @@ public class RythmManager : MonoBehaviour
     [Space(10)]
     public GameObject stepLeft;
     public GameObject stepRight;
+    public Transform walls;
+    public float wallMoveDistance = 0.1f;
     private void Start()
     {
         StartCoroutine(WalkCycle());
@@ -47,11 +49,9 @@ public class RythmManager : MonoBehaviour
 
                 onCanHit?.Invoke();
                 canHit = true;
-                Debug.Log("can hit!");
                 yield return new WaitForSeconds(timeToHit);
 
                 onCantHit?.Invoke();
-                Debug.Log("Can't hit!");
                 canHit = false;
                 
 
@@ -97,6 +97,9 @@ public class RythmManager : MonoBehaviour
             stepRight.SetActive(false);
         }
         stepSound.Play();
+
+        //move environment
+        walls.DOMove(walls.transform.position - new Vector3(0, 0, wallMoveDistance), 0.5f);
     }
 
     public void Die()

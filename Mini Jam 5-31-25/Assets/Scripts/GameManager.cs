@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Knife knife;
 
     public GameObject character;
+
+    public StabZone stabZone;
     [Space(10)]
     public UnityEvent onFinishStab;
     public enum GameState
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Game State changed to Walking");
                 break;
             case GameState.Stabbing:
-                StartStabbing();
+                Invoke(nameof(StartStabbing), 0.5f);
                 break;
             case GameState.FinishStabbing:
                 FinishStabbing();
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void StartStabbing()
     {
+        
         stabbingManager.StartStabbing();
     }
 

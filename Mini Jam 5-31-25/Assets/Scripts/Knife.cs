@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Knife : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Knife : MonoBehaviour
     private bool canStab = true;
 
     private int stabNum = 0;
+
     private void Start()
     {
         // Start the bobbing animation coroutine
@@ -23,6 +25,7 @@ public class Knife : MonoBehaviour
             transform.DOMoveY(transform.position.y + bobAmount, 1f)
                 .SetEase(Ease.InOutSine);
             yield return new WaitForSeconds(1f);
+            
             transform.DOMoveY(transform.position.y - bobAmount, 1f)
                 .SetEase(Ease.InOutSine);
             yield return new WaitForSeconds(1f);
@@ -36,10 +39,16 @@ public class Knife : MonoBehaviour
         Vector3 ogPos = transform.position;
         transform.DOMove(new Vector3(transform.position.x + -0.273f, transform.position.y, transform.position.z + 0.331f), 0.2f).OnComplete(
             () => {
-                GameManager.Instance.stabbingManager.onStab?.Invoke();
+                stabNum++;
+                if (stabNum < GameManager.Instance.stabbingManager.hitsNeeded)
+                
+                    GameManager.Instance.stabbingManager.onStab?.Invoke();
+                
+                else
+                    GameManager.Instance.stabbingManager.onFinalStab?.Invoke();
                 transform.DOMove(ogPos, 0.1f).OnComplete(() => 
                 { 
-                    stabNum++;
+                   
                     if (stabNum >= GameManager.Instance.stabbingManager.hitsNeeded)
                     {
                         GameManager.Instance.FinishStabbing();
