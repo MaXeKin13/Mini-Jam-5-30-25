@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Knife knife;
 
     public GameObject character;
+
+    public StabZone stabZone;
     [Space(10)]
     public UnityEvent onFinishStab;
     public enum GameState

@@ -18,11 +18,17 @@ public class StabbingManager : MonoBehaviour
 
 
     public UnityEvent onStab;
+    public UnityEvent onFinalStab;
+
+
+
 
     [Space(10)]
     public int hitsNeeded = 3;
 
+    public float jiggleSpeed = 0.1f;
     public float jiggleIncrease = 0.3f;
+
     private void Start()
     {
         stabCursor = cursor.GetComponent<StabCursor>();
@@ -34,7 +40,7 @@ public class StabbingManager : MonoBehaviour
     }
     public void JiggleMouse()
     {
-        cursor.DOMove(mouseCursor.position + new Vector3(Random.Range(-jiggleRange, jiggleRange), Random.Range(-jiggleRange, jiggleRange), 0), 0.1f)
+        cursor.DOMove(mouseCursor.position + new Vector3(Random.Range(-jiggleRange, jiggleRange), Random.Range(-jiggleRange, jiggleRange), 0), jiggleSpeed)
             .SetEase(Ease.InOutSine)
             .OnComplete(() => JiggleMouse());
     }
