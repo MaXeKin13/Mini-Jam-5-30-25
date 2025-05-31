@@ -1,16 +1,28 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class StabbingManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject stabbing;
+    [Space(10)]
+    public Transform mouseCursor;
+    public Transform cursor;
+
+    public float jiggleRange;
+
+    private void Start()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void StartStabbing()
     {
-        
+        stabbing.SetActive(true);
+        JiggleMouse();
+    }
+    public void JiggleMouse()
+    {
+        cursor.DOMove(mouseCursor.position + new Vector3(Random.Range(-jiggleRange, jiggleRange), Random.Range(-jiggleRange, jiggleRange), 0), 0.1f)
+            .SetEase(Ease.InOutSine)
+            .OnComplete(() => JiggleMouse());
     }
 }
