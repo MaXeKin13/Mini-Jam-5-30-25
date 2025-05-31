@@ -11,6 +11,9 @@ public class StabbingManager : MonoBehaviour
 
     public float jiggleRange;
 
+    [Space(10)]
+    public Transform character;
+
     private StabCursor stabCursor;
 
 
@@ -18,6 +21,8 @@ public class StabbingManager : MonoBehaviour
 
     [Space(10)]
     public int hitsNeeded = 3;
+
+    public float jiggleIncrease = 0.3f;
     private void Start()
     {
         stabCursor = cursor.GetComponent<StabCursor>();
@@ -42,8 +47,8 @@ public class StabbingManager : MonoBehaviour
         }
     }
 
-    public void FinishStabbing()
+    public void IncreaseJiggle()
     {
-
+        jiggleRange += jiggleIncrease;      
     }
 }

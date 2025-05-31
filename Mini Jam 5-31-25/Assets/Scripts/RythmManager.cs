@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class RythmManager : MonoBehaviour
 {
+    public float walkDistance = 0.1f;
     public bool walking = true;
 
     public UnityEvent onCanHit;

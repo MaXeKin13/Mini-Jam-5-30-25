@@ -28,6 +28,8 @@ public class StabCursor : MonoBehaviour
             Debug.Log("Stab successful!");
 
             GameManager.Instance.knife.Stab();
+
+            GameManager.Instance.stabbingManager.IncreaseJiggle();
         }
     }
 
