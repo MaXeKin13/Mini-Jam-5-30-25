@@ -16,7 +16,7 @@ public class StabbingManager : MonoBehaviour
 
     private StabCursor stabCursor;
 
-
+    public UnityEvent onStartStabbing;
     public UnityEvent onStab;
     public UnityEvent onFinalStab;
 
@@ -35,6 +35,7 @@ public class StabbingManager : MonoBehaviour
     }
     public void StartStabbing()
     {
+        onStartStabbing?.Invoke();
         stabbing.SetActive(true);
         JiggleMouse();
     }
