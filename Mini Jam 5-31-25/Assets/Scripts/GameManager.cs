@@ -7,10 +7,14 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public StabbingManager stabbingManager;
+
+    
+    public Knife knife;
     public enum GameState
     {
         Walking,
-        Stabbing
+        Stabbing,
+        FinishStabbing
     }
     public GameState gameState = GameState.Walking;
 
@@ -31,6 +35,9 @@ public class GameManager : MonoBehaviour
             case GameState.Stabbing:
                 StartStabbing();
                 break;
+            case GameState.FinishStabbing:
+                FinishStabbing();
+                break;
         }
     }
 
@@ -38,4 +45,14 @@ public class GameManager : MonoBehaviour
     {
         stabbingManager.StartStabbing();
     }
+
+    public void StabAnim()
+    {
+        knife.Stab();
+    }
+
+    public void FinishStabbing()
+    {
+
+    }    
 }
